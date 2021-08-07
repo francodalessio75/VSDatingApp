@@ -2,7 +2,6 @@
   "ConnectionStrings": {
     "DefaultConnection": "Data source=datingapp.db"
   },
-  "TokenKey": "superSecretUnguessableKey",
   "Logging": {
     "LogLevel": {
       "Default": "Information",
