@@ -1,0 +1,11 @@
+<section *ngIf="!registerMode">
+  <h1>Find your match</h1>
+  <p>Come on in to view your matches...</p>
+
+  <button mat-raised-button color="accent" (click)="registerToggle()">Register</button>
+  <button mat-raised-button color="primary">Learn More</button>
+</section>
+<section *ngIf="registerMode">
+  <p>Register form goes here...</p>
+  <app-register [usersFromHomeComponent]="users"></app-register>
+</section>

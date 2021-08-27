@@ -1,0 +1,76 @@
+<mat-toolbar color="primary" class="navbar">
+  <div>Dating App</div>
+  <div *ngIf="(currentUser$ | async )">
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Matches</button>
+      <button mat-menu-item>Lists</button>
+      <button mat-menu-item>Messages</button>
+      <button mat-menu-item *ngIf="(currentUser$ | async )" (click)="logout()">Log Out</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+<section *ngIf="!(currentUser$ | async )">
+  <form fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px"
+        [formGroup]="loginForm"
+        (ngSubmit)="login()">
+    <mat-form-field>
+      <input type="text"
+             matInput
+             placeholder="username"
+             formControlName="username">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password"
+             matInput
+             placeholder="Your password"
+             formControlName="password">
+      <mat-hint *ngIf="(currentUser$ | async ) === null">Please enter your password.</mat-hint>
+      <mat-error>Missing password.</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+  </form>
+</section>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>

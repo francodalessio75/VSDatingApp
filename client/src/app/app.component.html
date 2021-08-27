@@ -1,9 +1,10 @@
 
-<mat-nav-list>
-  <mat-list-item *ngFor='let user of users'>
-    <a matLine>{{ user.id }} - {{ user.userName }}</a>
-    <button mat-icon-button>
-      <mat-icon>info</mat-icon>
-    </button>
-  </mat-list-item>
-</mat-nav-list>
+<app-nav></app-nav>
+
+<mat-list role="list" *ngIf="(accountService.currentUser$ | async )">
+  <mat-list-item role="listitem" *ngFor="let user of users">{{user.id}} - {{user.userName}}</mat-list-item>
+</mat-list>
+
+<app-home></app-home>
+
+

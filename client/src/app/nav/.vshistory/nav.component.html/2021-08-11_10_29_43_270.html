@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" class="navbar">
+  <div>Dating App</div>
+  <div>
+    <span>Matches</span>
+    <span>Lists</span>
+    <span>Messages</span>
+  </div>
+</mat-toolbar>
+<section>
+  <form fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px"
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input type="text"
+             matInput
+             placeholder="username"
+             formControlName="username">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password"
+             matInput
+             placeholder="Your password"
+             formControlName="password">
+      <mat-hint *ngIf="!loginForm.valid">Please enter your password.</mat-hint>
+      <mat-error>Missing password.</mat-error>
+    </mat-form-field>
+    <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</section>

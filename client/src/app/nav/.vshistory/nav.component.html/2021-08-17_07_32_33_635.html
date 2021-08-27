@@ -1,0 +1,74 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Login Page Sample</span>
+    <!--<span class="example-fill-remaining-space"></span>
+    <span class="align-center"></span>
+    <span class="example-spacer"></span>-->
+    <button mat-button align="end">Matches</button>
+    <button mat-button align="end">Lists</button>
+    <button mat-button align="right">Messages</button>
+    <button mat-button *ngIf="(accountService.currentUser$ | async )" (click)="logout()" align="end">Log Out</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" align="end">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voicemail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+
+  <!-- Toolbar -->
+  <mat-toolbar-row color="primary" class="app-header">
+    <div><a href="https://www.positronx.io" target="_blank" class="positronx">Dating App</a></div>
+    <span class="nav-tool-items">
+      <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
+      <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+    </span>
+  </mat-toolbar-row>
+  </mat-toolbar>
+  <!--</mat-toolbar-row>
+    <div>Dating App</div>
+    <div *ngIf="(accountService.currentUser$ | async )">
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Matches</button>
+        <button mat-menu-item>Lists</button>
+        <button mat-menu-item>Messages</button>
+        <button mat-menu-item *ngIf="(accountService.currentUser$ | async )" (click)="logout()">Log Out</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  <section *ngIf="!(accountService.currentUser$ | async )">
+    <form fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="10px"
+          [formGroup]="loginForm"
+          (ngSubmit)="login()">
+      <mat-form-field>
+        <input type="text"
+               matInput
+               placeholder="username"
+               formControlName="username">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password"
+               matInput
+               placeholder="Your password"
+               formControlName="password">
+        <mat-hint *ngIf="(accountService.currentUser$ | async ) === null">Please enter your password.</mat-hint>
+        <mat-error>Missing password.</mat-error>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+    </form>
+  </section>-->
+

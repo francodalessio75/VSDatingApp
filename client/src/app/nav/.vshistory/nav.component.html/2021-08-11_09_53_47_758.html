@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="navbar">
+  <div>Dating App</div>
+  <div>
+    <span>Matches</span>
+    <span>Lists</span>
+    <span>Messages</span>
+    <span><form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form"></form></span>
+    <!--<span>
+      <form action="/" method="post">
+        <mat-form-field appearance="fill">
+          <mat-label>username</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </form>
+    </span>-->
+    <!--<span>
+      <mat-container>
+        <form>
+          <span><input type="text" name="username" value="" placeholder="username" /></span>
+          <span><input type="password" name="password" value="" placeholder="username" /></span>
+          <span><input type="button" name="login" value="login" color="red" /></span>
+        </form>
+      </mat-container>
+    </span>-->
+    
+  </div>
+</mat-toolbar> 

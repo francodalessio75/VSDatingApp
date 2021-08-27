@@ -1,0 +1,25 @@
+
+<h2>Sign Up</h2>
+<form fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px"
+      [formGroup]="registerForm"
+      (ngSubmit)="register()">
+  <mat-form-field>
+    <input type="text"
+           matInput
+           placeholder="username"
+           formControlName="username">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="password"
+           matInput
+           placeholder="Your password"
+           formControlName="password">
+    <mat-hint *ngIf="!registerForm.valid">Please enter your password.</mat-hint>
+    <mat-error>Missing password.</mat-error>
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="primary" (click)="register()">Register</button>
+  <button type="submit" mat-raised-button color="accent" (click)="cancel()">Cancel</button>
+</form>
+
