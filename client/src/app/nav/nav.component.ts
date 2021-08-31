@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,  Validators, FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { User } from '../_models/user';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -9,41 +9,32 @@ import { AccountService } from '../_services/account.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
 
-  loginForm: any;
-  model: any = { 'username': '', 'password': '' };
-  formControlUsername: string = '';
-  formControlPassword: string = '';
+  loginForm = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required]
+  });
 
+  model = { 'username': '', 'password': '' };
 
+  constructor(public accountService: AccountService, private router: Router, private fb: FormBuilder, private toastr: ToastrService) { }
 
-  constructor(public accountService: AccountService) { }
-
-
-  ngOnInit() {
-    this.loginForm = new FormGroup({
-      username: new FormControl('', {validators: [Validators.required]
-      }),
-      password: new FormControl('', { validators: [Validators.required] })
-    });
-  }
-
- 
-
-  login() {
+  onSubmit() {
     this.model.username = this.loginForm.value.username;
     this.model.password = this.loginForm.value.password;
    
     this.accountService.login(this.model).subscribe(response => {
-      console.log(response);
+      this.router.navigateByUrl('/members');
     },error => {
       console.log(error);
+      this.toastr.error(error.error);
       });
   }
 
   logout() {
     this.accountService.logout();
+    this.router.navigateByUrl('/');
   }
 
 }

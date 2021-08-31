@@ -1,3 +1,10 @@
 mat-form-field {
   width: 300px;
 }
+.example-spacer {
+  flex: 1 1 auto;
+}
+.activebutton {
+  background-color: mediumpurple;
+  color: white;
+}

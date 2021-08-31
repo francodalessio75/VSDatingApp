@@ -1,73 +1,46 @@
+
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Dating App</span>
-    <!--<span class="example-fill-remaining-space"></span>
-    <span class="align-center"></span>
-    <span class="example-spacer"></span>-->
-    <button mat-button align="end">Matches</button>
-    <button mat-button align="end">Lists</button>
-    <button mat-button align="right">Messages</button>
-    <button mat-button *ngIf="(accountService.currentUser$ | async )" (click)="logout()" align="end">Log Out</button>
-    <button mat-icon-button [matMenuTriggerFor]="menu" align="end">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
+    <button mat-button align="start" style="font-size:1.5rem;" routerLink="/">Dating App</button>
+    <span class="example-spacer"></span>
+    <ng-container *ngIf="(accountService.currentUser$ | async) as user">
+      <button mat-button align="end" routerLink="/members" routerLinkActive="activebutton">Matches</button>
+      <button mat-button align="end" routerLink="/lists" routerLinkActive="activebutton">Lists</button>
+      <button mat-button align="right" routerLink="/messages" routerLinkActive="activebutton">Messages</button>    
+      <button mat-button *ngIf="(accountService.currentUser$ | async )" (click)="logout()" align="end">Log Out</button>
+      <button mat-icon-button [matMenuTriggerFor]="menu" align="end">
+        <mat-icon>more_vert</mat-icon>
       </button>
-      <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voicemail</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
-      </button>
-    </mat-menu>
-  </mat-toolbar-row>
-
-  <!-- Toolbar -->
-  <mat-toolbar-row color="primary" class="app-header">
-    <span class="nav-tool-items">
-      <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
-      <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
-    </span>
-  </mat-toolbar-row>
-  </mat-toolbar>
-  <!--</mat-toolbar-row>
-    <div>Dating App</div>
-    <div *ngIf="(accountService.currentUser$ | async )">
-      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Matches</button>
-        <button mat-menu-item>Lists</button>
-        <button mat-menu-item>Messages</button>
-        <button mat-menu-item *ngIf="(accountService.currentUser$ | async )" (click)="logout()">Log Out</button>
+      <mat-menu #menu="matMenu" align="left">
+        <span>Welcome {{ user.username | titlecase}}</span>
+        <button mat-menu-item>
+          <mat-icon>edit</mat-icon>
+          <span>Edit Profile</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
       </mat-menu>
-    </div>
-  </mat-toolbar>
-  <section *ngIf="!(accountService.currentUser$ | async )">
-    <form fxLayout="column"
-          fxLayoutAlign="center center"
-          fxLayoutGap="10px"
-          [formGroup]="loginForm"
-          (ngSubmit)="login()">
-      <mat-form-field>
-        <input type="text"
-               matInput
-               placeholder="username"
-               formControlName="username">
-      </mat-form-field>
-      <mat-form-field>
-        <input type="password"
-               matInput
-               placeholder="Your password"
-               formControlName="password">
-        <mat-hint *ngIf="(accountService.currentUser$ | async ) === null">Please enter your password.</mat-hint>
-        <mat-error>Missing password.</mat-error>
-      </mat-form-field>
-      <button type="submit" mat-raised-button color="primary">Submit</button>
-    </form>
-  </section>-->
+    </ng-container>
+    <ng-container *ngIf="(accountService.currentUser$  | async ) === null ">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input id="username" type="text" formControlName="username" required>
+        <input id="password" type="password" formControlName="password" required>
+        <button class="btn btn-success" type="submit" [disabled]="loginForm.invalid">Login</button>
+      </form>
+      <!--<form *ngIf="(accountService.currentUser$  | async ) === null " #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" autocomplete="off">
+        <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text" placeholder="Username">
+        <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password" placeholder="Password">
+        <button class="btn btn-success" type="submit">Login</button>
+      </form>-->
+      <!--<span class="nav-tool-items">
+    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
+    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+  </span>-->
+    </ng-container>
+</mat-toolbar-row>
+
+  
+
 
